@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "data/solar_top_postcodes.csv"},
+  "data": {"url": "./data/solar_top_postcodes.csv"},
   "mark": "bar",
   "encoding": {
     "x": {"field": "IncomeBand", "type": "nominal", "title": "Income Band"},

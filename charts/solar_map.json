@@ -10,14 +10,14 @@
   },
   "layer": [
     {
-      "data": { "url": "data/aus_states.topo.json",
+      "data": { "url": "./data/aus_states.topo.json",
         "format": { "type": "topojson", "feature": "aus_states" }
       },
       "transform": [
         {
           "lookup": "properties.abbr",
           "from": {
-            "data": { "url": "data/solar_state_summary.csv" },
+            "data": { "url": "./data/solar_state_summary.csv" },
             "key": "State",
             "fields": ["TotalInstallations"]
           }

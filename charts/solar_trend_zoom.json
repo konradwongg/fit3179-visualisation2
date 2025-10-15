@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "data/solar_trend.csv"},
+  "data": {"url": "./data/solar_trend.csv"},
   "transform": [{"filter": "datum.Year >= 2010 && datum.Year <= 2014"}],
   "width": 700,
   "height": 320,

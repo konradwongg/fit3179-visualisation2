@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "data/solar_state_summary.csv"},
+  "data": {"url": "./data/solar_state_summary.csv"},
   "mark": "bar",
   "encoding": {
     "x": {"field": "State", "type": "nominal"},
