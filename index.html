@@ -1,13 +1,12 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Australia’s Solar Revolution</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+ 
 
-  <!-- IMPORTANT for GitHub Pages project URL -->
-  <!-- If you rename the repo, update this href to /<new-repo-name>/ -->
-  <base href="/fit3179-visualisation2/">
 
   <!-- Vega stack -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -119,6 +118,8 @@
         </div>
       </div>
     </section>
+
+
 
     <!-- 2. Where Solar Shines Brightest -->
     <section class="chapter">
@@ -266,40 +267,21 @@
     </div>
   </footer>
 
-  <!-- Embed helpers and robust base for Vega loader -->
   <script>
-    // show() prints helpful errors under a chart if an embed fails
-    function show(id, spec, opts) {
-      return vegaEmbed(id, spec, opts).catch(err => {
-        console.error("Embed failed for", spec, err);
-        const el = document.querySelector(id);
-        if (el) el.insertAdjacentHTML("afterend",
-          `<pre style="color:#b00020;white-space:pre-wrap">${spec}\n${err}</pre>`);
-      });
-    }
-
-    // Build a base URL that matches your published project path
-    // Specs live in /charts, and many use "../data/...", so set loader base to ".../charts/"
-    const PROJECT_BASE = (document.querySelector('base')?.href || window.location.origin + window.location.pathname);
-    const embedOpts = { loader: { baseURL: PROJECT_BASE + 'charts/' } };
-
-    // Load theme first, then embed all charts with consistent config
-    fetch('charts/_theme.json')
-      .then(r => r.json())
-      .then(cfg => {
-        const opts = Object.assign({config: cfg}, embedOpts);
-        show('#trend',                 'charts/solar_trend.json', opts);
-        show('#trend_zoom',            'charts/solar_trend_zoom.json', opts);
-        show('#map',                   'charts/solar_map.json', opts);
-        show('#bar_top',               'charts/solar_bar_top_postcodes.json', opts);
-        show('#bar_state',             'charts/solar_bar_state.json', opts);
-        show('#scatter_income',        'charts/solar_scatter_income.json', opts);
-        show('#bubble_income_pop',     'charts/solar_bubble_income_pop.json', opts);
-        show('#grouped_income',        'charts/solar_grouped_income.json', opts);
-        show('#scatter_pop',           'charts/solar_scatter_pop.json', opts);
-        // Only call this if the file exists in /charts
-        show('#facet_state_trend',     'charts/solar_facet_state_trend.json', opts);
-      });
+    const theme = fetch('charts/_theme.json').then(r => r.json());
+    theme.then(cfg => {
+      vegaEmbed('#trend', 'charts/solar_trend.json', {config: cfg});
+      vegaEmbed('#trend_zoom', 'charts/solar_trend_zoom.json', {config: cfg});
+      vegaEmbed('#map', 'charts/solar_map.json', {config: cfg});
+      vegaEmbed('#bar_top', 'charts/solar_bar_top_postcodes.json', {config: cfg});
+      vegaEmbed('#bar_state', 'charts/solar_bar_state.json', {config: cfg});
+      vegaEmbed('#scatter_income', 'charts/solar_scatter_income.json', {config: cfg});
+      vegaEmbed('#bubble_income_pop', 'charts/solar_bubble_income_pop.json', {config: cfg});
+      vegaEmbed('#grouped_income', 'charts/solar_grouped_income.json', {config: cfg});
+      vegaEmbed('#scatter_pop', 'charts/solar_scatter_pop.json', {config: cfg});
+      vegaEmbed('#facet_state_trend', 'charts/solar_facet_state_trend.json', {config: cfg});
+    });
   </script>
 </body>
 </html>
+
