@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Historic base vs recent installs by state",
+  "data": { "url": "data/state_trends_solar_installation.csv" },
+  "transform": [
+    { "fold": ["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"], "as": ["year","inst"] },
+    { "aggregate": [{ "op": "sum", "field": "inst", "as": "recent_total" }], "groupby": ["STATE"] },
+    {
+      "lookup": "STATE",
+      "from": {
+        "data": { "url": "data/Hist_total_solar_installation_2001_2010.csv" },
+        "key": "STATE",
+        "fields": ["HISTORIC_TOTAL_2001_2010"]
+      }
+    },
+    { "calculate": "datum.HISTORIC_TOTAL_2001_2010", "as": "historic_total" },
+    { "fold": ["historic_total", "recent_total"], "as": ["period_key", "total"] },
+    { "calculate": "datum.period_key==='historic_total' ? '2001–2010' : '2011–2024'", "as": "Period" }
+  ],
+  "params": [
+    { "name": "periodSel", "select": { "type": "point", "fields": ["Period"] }, "bind": "legend" }
+  ],
+  "mark": { "type": "bar", "cornerRadiusEnd": 4 },
+  "encoding": {
+    "x": { "field": "STATE", "type": "nominal", "title": "State", "sort": "-y" },
+    "y": { "field": "total", "type": "quantitative", "title": "Installations (total)" },
+    "color": { "field": "Period", "type": "nominal", "legend": { "title": "Period" } },
+    "opacity": { "condition": { "param": "periodSel", "value": 1 }, "value": 0.45 },
+    "tooltip": [
+      { "field": "STATE", "title": "State" },
+      { "field": "Period" },
+      { "field": "total", "title": "Total installs", "format": "," }
+    ]
+  }
+}

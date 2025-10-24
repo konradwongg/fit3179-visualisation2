@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Annual solar installations by state (2011–2024)",
+  "width": 640,
+  "height": 360,
+  "data": {
+    "url": "data/state_trends_solar_installation.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "2011":"number","2012":"number","2013":"number","2014":"number",
+        "2015":"number","2016":"number","2017":"number","2018":"number",
+        "2019":"number","2020":"number","2021":"number","2022":"number",
+        "2023":"number","2024":"number"
+      }
+    }
+  },
+  "transform": [
+    {"fold": ["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"], "as": ["year","val"]},
+    {"calculate": "toNumber(datum.year)", "as": "year_num"},
+    {"calculate": "toNumber(datum.val)", "as": "inst"},
+    {"calculate": "replace(datum.STATE, /^\\s+|\\s+$/g, '')", "as": "STATE_trim"}
+  ],
+  "params": [
+    {"name": "stateSel", "select": {"type":"point","fields":["STATE_trim"]}, "bind":"legend"}
+  ],
+  "mark": {"type":"line","point": true},
+  "encoding": {
+    "x": {"field":"year_num","type":"quantitative","title":"Year","axis":{"format":"d"}},
+    "y": {"field":"inst","type":"quantitative","title":"Installs per year"},
+    "color": {"field":"STATE_trim","type":"nominal","legend":{"title":"State"}},
+    "opacity": {"condition":{"param":"stateSel","value":1},"value":0.25},
+    "tooltip": [
+      {"field":"STATE_trim","title":"State"},
+      {"field":"year_num","title":"Year"},
+      {"field":"inst","title":"Installs","format":","}
+    ]
+  }
+}

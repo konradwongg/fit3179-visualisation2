@@ -1,12 +1,15 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Australia’s Solar Revolution</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
- 
 
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
 
   <!-- Vega stack -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -15,246 +18,280 @@
 
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="bg-white">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- HERO -->
-  <header class="page-hero">
-    <div class="container">
-      <h1>☀️ Australia’s Solar Revolution</h1>
-      <p class="lede">
-        Over the past two decades, Australia has moved from traditional energy toward world leading rooftop solar.
+  <header class="page-hero border-bottom">
+    <div class="container-xl hero-inner">
+      <h1 class="display-4 fw-bold text-center mb-2">☀️ Australia’s Solar Revolution</h1>
+      <p class="lede mx-auto">
+        Over the past two decades, Australia has moved from traditional energy toward world-leading rooftop solar.
         This visualisation traces installations from 2001 to 2024, shows where solar shines most, and explains what drives adoption.
-        Sources include the Clean Energy Regulator and the 2021 ABS Census.
-      </p>
+        Sources: Clean Energy Regulator (CER) and ABS 2021 Census.
+      </p>  
     </div>
   </header>
 
-  <!-- KEY NUMBERS STRIP -->
-  <section class="stat-strip container" aria-label="Key numbers">
-    <div class="stat">
-      <div class="stat-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <circle cx="12" cy="12" r="5" fill="#f4a261"/>
-          <g stroke="#f4a261" stroke-width="1.8">
-            <line x1="12" y1="1.5" x2="12" y2="5.2"/><line x1="12" y1="18.8" x2="12" y2="22.5"/>
-            <line x1="1.5" y1="12" x2="5.2" y2="12"/><line x1="18.8" y1="12" x2="22.5" y2="12"/>
-            <line x1="4.2" y1="4.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="19.8" y2="19.8"/>
-            <line x1="4.2" y1="19.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="19.8" y2="4.2"/>
-          </g>
-        </svg>
+  <!-- KEY NUMBERS STRIP (Bootstrap cards) -->
+  <section class="container-xl py-3" aria-label="Key numbers">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+          <div class="card-body d-flex align-items-center gap-3">
+            <div class="stat-icon flex-shrink-0">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <circle cx="12" cy="12" r="5" fill="#f4a261"/>
+                <g stroke="#f4a261" stroke-width="1.8">
+                  <line x1="12" y1="1.5" x2="12" y2="5.2"/><line x1="12" y1="18.8" x2="12" y2="22.5"/>
+                  <line x1="1.5" y1="12" x2="5.2" y2="12"/><line x1="18.8" y1="12" x2="22.5" y2="12"/>
+                  <line x1="4.2" y1="4.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="19.8" y2="19.8"/>
+                  <line x1="4.2" y1="19.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="19.8" y2="4.2"/>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <div class="h4 mb-0 fw-bold">3.7m+</div>
+              <div class="text-muted small">Rooftop systems installed</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="stat-num">3.7m+</div>
-      <div class="stat-label">Rooftop systems installed</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <path d="M4 10h16v10H4z" fill="#2e7d32"/><path d="M8 7l4-3 4 3v3H8z" fill="#81c784"/>
-        </svg>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+          <div class="card-body d-flex align-items-center gap-3">
+            <div class="stat-icon flex-shrink-0">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M4 10h16v10H4z" fill="#2e7d32"/><path d="M8 7l4-3 4 3v3H8z" fill="#81c784"/>
+              </svg>
+            </div>
+            <div>
+              <div class="h4 mb-0 fw-bold">1 in 3</div>
+              <div class="text-muted small">Homes with solar by 2024</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="stat-num">1 in 3</div>
-      <div class="stat-label">Homes with solar by 2024</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <circle cx="12" cy="12" r="9" fill="#f9a825"></circle>
-          <text x="12" y="16" text-anchor="middle" font-size="10" fill="#fff">2011–13</text>
-        </svg>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+          <div class="card-body d-flex align-items-center gap-3">
+            <div class="stat-icon flex-shrink-0">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <circle cx="12" cy="12" r="9" fill="#f9a825"></circle>
+                <text x="12" y="16" text-anchor="middle" font-size="10" fill="#fff">2011–13</text>
+              </svg>
+            </div>
+            <div>
+              <div class="h4 mb-0 fw-bold">Boom years</div>
+              <div class="text-muted small">Policy lifted early uptake</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="stat-num">Boom years</div>
-      <div class="stat-label">Policy lifted early uptake</div>
     </div>
   </section>
 
-  <main id="main" class="container">
+  <main id="main" class="container-xl">
 
     <!-- 1. Solar Growth Over Time -->
-    <section class="chapter">
-      <h2 class="chapter-title"><span>1</span> Solar Growth Over Time</h2>
-      <p class="chapter-subtitle">From early adopters to mainstream momentum</p>
+    <section class="chapter" aria-labelledby="growth">
+      <div class="mb-2">
+        <h2 id="growth" class="chapter-title d-flex align-items-center gap-2"><span>1</span> Solar Growth Over Time</h2>
+        <p class="chapter-subtitle text-muted">From early adopters to mainstream momentum</p>
+      </div>
 
       <!-- row A -->
-      <div class="viz-row">
-        <div class="viz-text">
+      <div class="row g-4 align-items-start mb-4">
+        <div class="col-lg-5">
           <h3 class="insight-title">Two waves, one direction</h3>
-          <p>
-            Australia shifts from niche technology to household habit. Early growth follows
-            falling panel prices and simple rebates, the mid decade pause reflects tighter support,
-            then momentum returns as energy prices rise and systems improve.
-          </p>
+          <p>Australia moves from niche technology to household habit. Early growth follows falling panel prices and simple rebates; a mid-decade pause mirrors tighter support; momentum returns with rising energy prices and better systems.</p>
           <ul class="insight-list">
-            <li>Early 2010s lift, incentives and cheaper panels widen access</li>
-            <li>2015 to 2016 pause, support tightens and demand cools</li>
-            <li>2019 to 2023 recovery, price drops and bill savings renew interest</li>
+            <li><strong>2011–13 lift:</strong> incentives + cheaper panels widen access.</li>
+            <li><strong>2015–16 pause:</strong> support tightens; demand cools.</li>
+            <li><strong>2019–23 recovery:</strong> lower prices and bill savings renew interest.</li>
           </ul>
         </div>
-        <div class="viz-chart">
-          <figure>
+        <div class="col-lg-7">
+          <figure class="mb-0">
             <div id="trend" aria-label="National growth of solar installations"></div>
-            <figcaption class="note">National installations, 2001 to 2024</figcaption>
+            <figcaption class="note">National installations, 2001–2024. Watch the early-2010s swell and late-2010s resurgence.</figcaption>
           </figure>
         </div>
       </div>
 
       <!-- row B -->
-      <div class="viz-row alt">
-        <div class="viz-chart">
-          <figure>
+      <div class="row g-4 align-items-start bg-warning-subtle rounded-4 p-3 p-md-4 border mb-2">
+        <div class="col-lg-7 order-lg-2">
+          <figure class="mb-0">
             <div id="trend_zoom" aria-label="Zoom on boom years"></div>
-            <figcaption class="note">Zoom on the policy driven boom, 2011 to 2013</figcaption>
+            <figcaption class="note">Policy-driven boom, 2011–2013, highlighted.</figcaption>
           </figure>
         </div>
-        <div class="viz-text">
+        <div class="col-lg-5">
           <h3 class="insight-title">The policy pulse</h3>
-          <p>
-            The spike aligns with generous feed in tariffs and small scale certificates.
-            When settings tighten the market cools, which shows how sensitive uptake is to policy timing.
-          </p>
-          <p class="callout">Takeaway, incentives shift timing, falling costs sustain adoption.</p>
+          <p>The spike aligns with generous feed-in tariffs and Small-scale Technology Certificates. When settings tighten, the market cools—showing how sensitive uptake is to policy timing.</p>
+          <p class="callout">Takeaway: policy shifts the <em>timing</em>; falling costs sustain the <em>trend</em>.</p>
         </div>
       </div>
     </section>
 
-
-
     <!-- 2. Where Solar Shines Brightest -->
-    <section class="chapter">
-      <h2 class="chapter-title"><span>2</span> Where Solar Shines Brightest</h2>
-      <p class="chapter-subtitle">State leaders and postcode hotspots</p>
+    <section class="chapter" aria-labelledby="where">
+      <div class="mb-2">
+        <h2 id="where" class="chapter-title d-flex align-items-center gap-2"><span>2</span> Where Solar Shines Brightest</h2>
+        <p class="chapter-subtitle text-muted">State leaders and postcode hotspots</p>
+      </div>
 
-      <div class="viz-row">
-        <div class="viz-text">
+      <div class="row g-4 align-items-start mb-4">
+        <div class="col-lg-5">
           <h3 class="insight-title">Sunbelt leaders</h3>
-          <p>
-            Queensland and South Australia lead on per household adoption.
-            Warm climates, detached housing, and earlier policy support raise penetration.
-          </p>
+          <p>Queensland and South Australia lead on per-household adoption. Warm climates, detached housing, and earlier policy support raise penetration.</p>
           <ul class="insight-list">
-            <li>Regional and outer metro suburbs show the highest rooftop share</li>
-            <li>Dense inner city areas lag due to apartments and roof constraints</li>
+            <li>Regional and outer-metro suburbs show the highest rooftop share.</li>
+            <li>Dense inner-city areas lag due to apartments and roof constraints.</li>
           </ul>
         </div>
-        <div class="viz-chart">
-          <figure>
+        <div class="col-lg-7">
+          <figure class="mb-0">
             <div id="map" aria-label="Map of solar penetration across Australia"></div>
-            <figcaption class="note">Penetration by region, latest year available</figcaption>
+            <figcaption class="note">Penetration by region, latest year available.</figcaption>
           </figure>
         </div>
       </div>
 
-      <div class="viz-row alt">
-        <div class="viz-chart">
-          <figure>
+      <div class="row g-4 align-items-start bg-light rounded-4 p-3 p-md-4 border mb-4">
+        <div class="col-lg-7">
+          <figure class="mb-0">
             <div id="bar_top" aria-label="Top postcodes by installations"></div>
-            <figcaption class="note">Top postcodes by cumulative systems</figcaption>
+            <figcaption class="note">Top postcodes by cumulative systems. Growth-corridor suburbs dominate.</figcaption>
           </figure>
         </div>
-        <div class="viz-text">
+        <div class="col-lg-5">
           <h3 class="insight-title">Hotspots by postcode</h3>
-          <p>
-            High performing postcodes cluster in growth corridors where lots are larger and roofs are unshaded.
-            Builder packages that include solar ready designs also lift numbers.
-          </p>
+          <p>High-performing postcodes cluster in growth corridors with larger lots and unshaded roofs. Builder packages with solar-ready designs also lift numbers.</p>
           <p class="note">Volume reflects both roof suitability and housing growth.</p>
         </div>
       </div>
 
-      <div class="viz-row">
-        <div class="viz-text">
+      <div class="row g-4 align-items-start mb-2">
+        <div class="col-lg-5">
           <h3 class="insight-title">State trajectories vary</h3>
-          <p>
-            States move with the national cycle yet sit at different levels. Leaders keep their edge across the period,
-            which points to structural differences in housing stock, sunshine, and policy timing.
-          </p>
+          <p>States move with the national cycle yet sit at different levels. Leaders keep their edge, pointing to structural differences in housing stock, sunshine and policy timing.</p>
         </div>
-        <div class="viz-chart">
-          <figure>
+        <div class="col-lg-7">
+          <figure class="mb-0">
             <div id="bar_state" aria-label="State comparison"></div>
-            <figcaption class="note">Installations by state, cumulative totals</figcaption>
+            <figcaption class="note">Installations by state, cumulative totals (2001–2024).</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
     <!-- 3. Income and Solar Adoption -->
-    <section class="chapter">
-      <h2 class="chapter-title"><span>3</span> Income and Solar Adoption</h2>
-      <p class="chapter-subtitle">Affordability meets bill saving incentives</p>
+    <section class="chapter" aria-labelledby="income">
+      <div class="mb-2">
+        <h2 id="income" class="chapter-title d-flex align-items-center gap-2"><span>3</span> Income and Solar Adoption</h2>
+        <p class="chapter-subtitle text-muted">Affordability meets bill-saving incentives</p>
+      </div>
 
-      <div class="viz-row">
-        <div class="viz-text">
+      <div class="row g-4 align-items-start mb-4">
+        <div class="col-lg-5">
           <h3 class="insight-title">A gentle income gradient</h3>
-          <p>
-            Uptake rises with income, yet many middle income suburbs adopt at high rates when rebates and simple finance
-            close the upfront gap. The mix of roof ownership and housing form explains several outliers.
-          </p>
-          <p class="note">Correlation is present, causation depends on housing and policy access.</p>
+          <p>Uptake rises with income, yet many middle-income suburbs adopt at high rates when rebates and simple finance close the upfront gap. Housing form and roof ownership explain several outliers.</p>
+          <p class="note">Correlation is present; causation depends on housing and policy access.</p>
         </div>
-        <div class="viz-chart">
-          <div id="scatter_income" aria-label="Income versus solar adoption"></div>
+        <div class="col-lg-7">
+          <figure class="mb-0">
+            <div id="scatter_income" aria-label="Income versus solar adoption"></div>
+            <figcaption class="note">Median income vs rooftop systems per 1,000 dwellings.</figcaption>
+          </figure>
         </div>
       </div>
 
-      <div class="viz-row alt">
-        <div class="viz-chart">
-          <div id="bubble_income_pop" aria-label="Income versus adoption with bubble for population"></div>
+      <div class="row g-4 align-items-start bg-light rounded-4 p-3 p-md-4 border mb-4">
+        <div class="col-lg-7 order-lg-2">
+          <figure class="mb-0">
+            <div id="bubble_income_pop" aria-label="Income versus adoption with bubble for population"></div>
+            <figcaption class="note">Bubble size shows suburb population. Bigger places add more systems at similar penetration.</figcaption>
+          </figure>
         </div>
-        <div class="viz-text">
+        <div class="col-lg-5">
           <h3 class="insight-title">Population size shapes the picture</h3>
-          <p>
-            Larger suburbs add more systems in total even when penetration is similar.
-            Bubble size helps separate volume from rate, which prevents misleading comparisons.
-          </p>
+          <p>Bubble size separates volume from rate, preventing misleading comparisons between big growth suburbs and smaller but high-penetration areas.</p>
         </div>
       </div>
 
-      <div class="viz-row">
-        <div class="viz-text">
+      <div class="row g-4 align-items-start mb-2">
+        <div class="col-lg-5">
           <h3 class="insight-title">Grouped by income bands</h3>
-          <p>
-            Grouped comparisons show that the middle band can match higher income areas when support is simple and visible,
-            for example clear rebates and installer offers that reduce friction at purchase.
-          </p>
+          <p>Middle-income areas can match high-income uptake when support is simple and visible—clear rebates and turnkey installer offers reduce friction at purchase.</p>
         </div>
-        <div class="viz-chart">
-          <div id="grouped_income" aria-label="Average adoption by income band"></div>
+        <div class="col-lg-7">
+          <figure class="mb-0">
+            <div id="grouped_income" aria-label="Average adoption by income band"></div>
+            <figcaption class="note">Average systems per 1,000 dwellings by income band.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
     <!-- 4. Demographics and State Trends -->
-    <section class="chapter">
-      <h2 class="chapter-title"><span>4</span> Demographics and State Trends</h2>
-      <p class="chapter-subtitle">Density, housing form, and state level cycles</p>
+    <section class="chapter" aria-labelledby="demo">
+      <div class="mb-2">
+        <h2 id="demo" class="chapter-title d-flex align-items-center gap-2"><span>4</span> Demographics and State Trends</h2>
+        <p class="chapter-subtitle text-muted">Density, housing form, and state-level cycles</p>
+      </div>
 
-      <div class="viz-row">
-        <div class="viz-text">
+      <div class="row g-4 align-items-start mb-4">
+        <div class="col-lg-5">
           <h3 class="insight-title">Density is destiny</h3>
-          <p>
-            Detached housing areas outpace dense inner suburbs.
-            Roof ownership, shading, and strata rules limit inner city uptake even when incomes are high.
-          </p>
+          <p>Detached-housing areas outpace dense inner suburbs. Roof ownership, shading and strata rules limit inner-city uptake even when incomes are high.</p>
         </div>
-        <div class="viz-chart">
-          <div id="scatter_pop" aria-label="Population versus total installations"></div>
+        <div class="col-lg-7">
+          <figure class="mb-0">
+            <div id="scatter_pop" aria-label="Population versus total installations"></div>
+            <figcaption class="note">Population vs total systems. Outer-metro and regional areas pull ahead.</figcaption>
+          </figure>
         </div>
       </div>
 
-      <div class="viz-row alt">
-        <div class="viz-chart">
-          <div id="facet_state_trend" aria-label="State trends faceted by state"></div>
+      <div class="row g-4 align-items-start bg-warning-subtle rounded-4 p-3 p-md-4 border mb-4">
+        <div class="col-lg-7">
+          <figure class="mb-0">
+            <div id="state_trends" aria-label="State trend lines with annotation"></div>
+            <figcaption class="note">Annual installations by state (2011–2024). Boom window shaded 2011–2013; use legend to highlight.</figcaption>
+          </figure>
         </div>
-        <div class="viz-text">
+        <div class="col-lg-5">
           <h3 class="insight-title">State cycles at a glance</h3>
-          <p>
-            Facets reveal shared peaks around the boom and persistent gaps across states.
-            Differences line up with housing mix, sunshine, network settings, and the timing of rebates.
-          </p>
-          <p class="callout">Look for timing, level, and slope, these three cues explain most variation.</p>
+          <p>Lines reveal shared peaks around the boom and persistent gaps across states—differences line up with housing mix, sunshine, network settings and the timing of rebates.</p>
+          <p class="callout">Tip: Compare <strong>timing</strong>, <strong>level</strong> and <strong>slope</strong>—these three cues explain most variation.</p>
+        </div>
+      </div>
+
+      <div class="row g-4 align-items-start mb-4">
+        <div class="col-lg-5">
+          <h3 class="insight-title">Total journey since 2001</h3>
+          <p>We add each state’s 2001–2010 foundation to the 2011–2024 wave to show the full rooftop journey. Leaders from the early era mostly remain leaders later on.</p>
+        </div>
+        <div class="col-lg-7">
+          <figure class="mb-0">
+            <div id="state_cumulative" aria-label="Cumulative installations since 2001"></div>
+            <figcaption class="note">Cumulative installations = historic base (2001–2010) + annual adds from 2011.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="row g-4 align-items-start mb-2">
+        <div class="col-lg-5">
+          <h3 class="insight-title">Who built the base, who surged later</h3>
+          <p>Compare the 2001–2010 foundation with the 2011–2024 wave. Some states built a large early base; others surged harder in the recent period.</p>
+        </div>
+        <div class="col-lg-7">
+          <figure class="mb-0">
+            <div id="state_hist_recent" aria-label="Historic vs recent totals"></div>
+            <figcaption class="note">Historic base vs recent period, state by state.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -262,26 +299,60 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container">
-      <p>Data, Clean Energy Regulator 2025, ABS Census 2021. Author, Konrad Wong. FIT3179 Data Visualisation 2.</p>
+    <div class="container-xl">
+      <p>Data: Clean Energy Regulator 2025, ABS Census 2021 • Author: Konrad Wong • FIT3179 Data Visualisation 2</p>
     </div>
   </footer>
 
   <script>
+    // Embed helper that forces charts to use the container width
+    async function mount(cfg, selector, specUrl, opts = {}) {
+      try {
+        const res  = await fetch(specUrl);
+        const spec = await res.json();
+
+        // Fill column width unless spec already responsive
+        if (spec.width === undefined || typeof spec.width === "number") {
+          spec.width = "container";
+        }
+        spec.config = Object.assign({}, cfg, spec.config || {});
+        await vegaEmbed(selector, spec, Object.assign({actions:false, renderer:"svg"}, opts));
+      } catch (err) {
+        console.error('Vega-Lite error for', selector, specUrl, err);
+        const el = document.querySelector(selector);
+        if (el) {
+          el.innerHTML =
+            '<div class="p-3 border rounded text-danger-emphasis bg-danger-subtle small">Chart failed to load. Open the console for details.<br><strong>' +
+            specUrl + '</strong></div>';
+        }
+      }
+    }
+
     const theme = fetch('charts/_theme.json').then(r => r.json());
     theme.then(cfg => {
-      vegaEmbed('#trend', 'charts/solar_trend.json', {config: cfg});
-      vegaEmbed('#trend_zoom', 'charts/solar_trend_zoom.json', {config: cfg});
-      vegaEmbed('#map', 'charts/solar_map.json', {config: cfg});
-      vegaEmbed('#bar_top', 'charts/solar_bar_top_postcodes.json', {config: cfg});
-      vegaEmbed('#bar_state', 'charts/solar_bar_state.json', {config: cfg});
-      vegaEmbed('#scatter_income', 'charts/solar_scatter_income.json', {config: cfg});
-      vegaEmbed('#bubble_income_pop', 'charts/solar_bubble_income_pop.json', {config: cfg});
-      vegaEmbed('#grouped_income', 'charts/solar_grouped_income.json', {config: cfg});
-      vegaEmbed('#scatter_pop', 'charts/solar_scatter_pop.json', {config: cfg});
-      vegaEmbed('#facet_state_trend', 'charts/solar_facet_state_trend.json', {config: cfg});
+      // Part 1
+      mount(cfg, '#trend', 'charts/solar_trend.json', {height: 320});
+      mount(cfg, '#trend_zoom', 'charts/solar_trend_zoom.json', {height: 340});
+
+      // Part 2
+      mount(cfg, '#map', 'charts/solar_map.json', {height: 520});
+      mount(cfg, '#bar_top', 'charts/solar_bar_top_postcodes.json', {height: 420});
+      mount(cfg, '#bar_state', 'charts/solar_bar_state.json', {height: 360});
+
+      // Part 3
+      mount(cfg, '#scatter_income', 'charts/solar_scatter_income.json', {height: 360});
+      mount(cfg, '#bubble_income_pop', 'charts/solar_bubble_income_pop.json', {height: 420});
+      mount(cfg, '#grouped_income', 'charts/solar_grouped_income.json', {height: 340});
+
+      // Part 4
+      mount(cfg, '#scatter_pop', 'charts/solar_scatter_pop.json', {height: 360});
+      mount(cfg, '#state_trends', 'charts/solar_state_trend_lines.json', {height: 380});
+      mount(cfg, '#state_cumulative', 'charts/solar_state_cumulative.json', {height: 360});
+      mount(cfg, '#state_hist_recent', 'charts/solar_state_historic_vs_recent.json', {height: 360});
     });
   </script>
+
+  <!-- Bootstrap JS (optional, for components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Cumulative installations since 2001 (historic base + 2011–2024)",
+  "data": {"url": "data/state_trends_solar_installation.csv"},
+  "params": [
+    {"name":"stateSel","select":{"type":"point","fields":["STATE"]},"bind":"legend"}
+  ],
+  "transform": [
+    {"fold": ["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"], "as": ["year","inst"]},
+    {"calculate": "toNumber(datum.year)", "as": "year_num"},
+    {
+      "lookup": "STATE",
+      "from": {
+        "data": {"url":"data/Hist_total_solar_installation_2001_2010.csv"},
+        "key": "STATE",
+        "fields": ["HISTORIC_TOTAL_2001_2010"]
+      }
+    },
+    {"calculate": "datum.HISTORIC_TOTAL_2001_2010", "as":"historic_total"},
+    {
+      "window": [{"op":"sum","field":"inst","as":"cum_recent"}],
+      "sort": [{"field":"STATE"}, {"field":"year_num"}],
+      "groupby": ["STATE"]
+    },
+    {"calculate": "datum.cum_recent + datum.historic_total", "as":"cum_total"}
+  ],
+  "mark": {"type":"line"},
+  "encoding": {
+    "x": {"field":"year_num","type":"quantitative","title":"Year", "axis":{"format":"d"}},
+    "y": {"field":"cum_total","type":"quantitative","title":"Cumulative installs since 2001"},
+    "color": {"field":"STATE","type":"nominal","legend":{"title":"State"}},
+    "opacity": {"condition":{"param":"stateSel","value":1},"value":0.25},
+    "tooltip": [
+      {"field":"STATE","title":"State"},
+      {"field":"year_num","title":"Year"},
+      {"field":"cum_total","title":"Cumulative installs","format":","},
+      {"field":"historic_total","title":"Historic base (2001–10)","format":","}
+    ]
+  }
+}
