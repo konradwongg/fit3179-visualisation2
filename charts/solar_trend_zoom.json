@@ -13,7 +13,7 @@
       }
     },
     {
-      "mark": {"type": "area", "color": "#F9A825", "opacity": 0.7},
+      "mark": {"type": "area", "color": "#fecb79", "opacity": 0.7},
       "encoding": {
         "x": {"field": "Year", "type": "ordinal"},
         "y": {"field": "TotalInstallations", "type": "quantitative", "axis": {"format": ","}},

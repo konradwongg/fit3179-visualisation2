@@ -28,7 +28,7 @@
   },
   "view": {"stroke": null},
   "config": {
-    "arc": {"stroke": "#fff", "strokeWidth": 1},
+    "arc": {"stroke": "#f6eeb4", "strokeWidth": 1},
     "legend": {"labelFontSize": 11, "titleFontSize": 12}
   }
 }
